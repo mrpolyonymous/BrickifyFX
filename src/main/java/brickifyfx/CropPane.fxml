@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<TitledPane expanded="true" layoutX="0.0" layoutY="0.0" text="Crop" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="brickifyfx.CropPaneController">
+  <content>
+    <GridPane hgap="5.0" vgap="5.0">
+      <children>
+        <Label text="Aspect Ratio:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="0" />
+        <ChoiceBox fx:id="cropRatioChoice" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Crop Origin X:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+          <labelFor>
+            <TextField fx:id="cropOriginXTextField" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+          </labelFor>
+        </Label>
+        <fx:reference source="cropOriginXTextField" />
+        <Label text="Crop Origin Y:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+          <labelFor>
+            <TextField fx:id="cropOriginYTextField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          </labelFor>
+        </Label>
+        <fx:reference source="cropOriginYTextField" />
+        <Label text="Crop Width:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+          <labelFor>
+            <TextField fx:id="cropWidthTextField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+          </labelFor>
+        </Label>
+        <fx:reference source="cropWidthTextField" />
+        <Label text="Crop Height:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+          <labelFor>
+            <TextField fx:id="cropHeightTextField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+          </labelFor>
+        </Label>
+        <fx:reference source="cropHeightTextField" />
+        <Button fx:id="cropButton" mnemonicParsing="false" onAction="#handleCropMode" text="Draw" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+        <Button mnemonicParsing="false" onAction="#handleClearCrop" text="Clear" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="88.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="233.0" />
+      </columnConstraints>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </content>
+</TitledPane>

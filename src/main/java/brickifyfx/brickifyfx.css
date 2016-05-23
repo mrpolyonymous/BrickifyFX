@@ -1,0 +1,29 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.resultView {
+	-fx-border-color: black;
+	-fx-border-width: 1px;
+	-fx-border-style: solid;
+}
+
+.red {
+    -fx-background-color: red;
+}
+
+.green {
+    -fx-background-color: green;
+}
+.blue {
+    -fx-background-color: blue;
+}
+
+.selectedButton {
+    -fx-background-color: #777777;
+	
+}

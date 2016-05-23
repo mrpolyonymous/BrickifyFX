@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<TitledPane expanded="true" layoutX="0.0" layoutY="0.0" prefWidth="350.0" text="Original Image" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="brickifyfx.LoadPaneController">
+  <content>
+    <GridPane hgap="5.0" prefHeight="-1.0" prefWidth="-1.0" vgap="5.0">
+      <children>
+        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#handleLoadButtonAction" text="Choose File..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="File:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+          <labelFor>
+            <TextField fx:id="imageFileTextField" editable="false" prefWidth="-1.0" text="Sample Image" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+          </labelFor>
+        </Label>
+        <fx:reference source="imageFileTextField" />
+        <Label text="Image Size:" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+          <labelFor>
+            <TextField fx:id="imageInfoField" editable="false" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          </labelFor>
+        </Label>
+        <fx:reference source="imageInfoField" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" percentWidth="25.0" prefWidth="73.0" />
+        <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" percentWidth="75.0" prefWidth="253.0" />
+      </columnConstraints>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </content>
+</TitledPane>
