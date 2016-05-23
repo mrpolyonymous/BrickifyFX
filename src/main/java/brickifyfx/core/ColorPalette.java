@@ -142,7 +142,7 @@ public class ColorPalette {
 
 	
 	
-	public static final ColorPalette LDD_COLORS = new ColorPalette("LEGO Digital Designer", LDD_COLOR_LIST);
+	public static final ColorPalette LDD_COLORS = new ColorPalette("LEGO® Digital Designer", LDD_COLOR_LIST);
 	public static final ColorPalette LDRAW_COLORS = new ColorPalette("LDraw", LDRAW_COLOR_LIST);
 	public static final ColorPalette GRAYSCALE = new ColorPalette("Grayscale", GRAYSCALE_COLOR_LIST);
 

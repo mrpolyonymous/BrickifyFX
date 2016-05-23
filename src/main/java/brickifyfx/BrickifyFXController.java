@@ -66,6 +66,9 @@ public class BrickifyFXController implements Initializable {
 	// Save-related fields
 	private OutputPaneController outputPaneController;
 
+	// Info-related fields
+	private InfoPaneController infoPaneController;
+
 	private Image originalImage;
 	private Image mosaicImage;
 	private Mosaic mosaic;
@@ -96,6 +99,13 @@ public class BrickifyFXController implements Initializable {
 			AnchorPane.setBottomAnchor(canvasPane, Double.valueOf(0.0));
 			AnchorPane.setLeftAnchor(canvasPane, Double.valueOf(0.0));
 			loadedControllers.add(imageCanvasController);
+
+			fxmlLoader = new FXMLLoader(getClass().getResource("InfoPane.fxml"));
+			TitledPane infoPane = (TitledPane) fxmlLoader.load();
+			infoPaneController = fxmlLoader.getController();
+			infoPaneController.setMainController(this);
+			titledPaneBox.getChildren().add(infoPane);
+			loadedControllers.add(infoPaneController);
 
 			fxmlLoader = new FXMLLoader(getClass().getResource("LoadPane.fxml"));
 			TitledPane loadPane = (TitledPane) fxmlLoader.load();

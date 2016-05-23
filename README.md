@@ -28,3 +28,7 @@ Eclipse still doesn't seem to understand that it's okay to call JavaFX APIs and 
 The Eclipse project settings here have added an explicit rule to allow JavaFX API access. If these don't take, you can
 disable warnings by going to Project properties->Java Build Path->Libraries->JRE System Library->Access rules, click Edit...,
 then add a rule to make `javafx/**` accessible.
+
+## Legal Disclaimers
+
+LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this application
