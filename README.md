@@ -18,7 +18,9 @@ though, there's no reason not to give BrickifyFX a try.
 
 ## Running
 
-In Windows you can probably double-click brickifyfx-1.0.jar to run the pre-built application.
+In Windows you should be able to double-click brickifyfx-1.0.jar to run the pre-built application.
+
+From a command line run `java -jar brickifyfx-1.0.jar`
 
 In Eclipse or IDEA, `brickifyfx.BrickifyFX` has a `main` method that will launch the application. NetBeans used to have
 some huge wrapper stuff around JavaFX applications. This may or may not still be the case; I haven't used NetBeans in a few
