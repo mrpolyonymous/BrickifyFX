@@ -3,15 +3,13 @@ package brickifyfx;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import brickifyfx.quantisation.QuantisationMethod;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import brickifyfx.quantisation.QuantisationMethod;
 
 public class RenderPaneController extends BasePaneController {
 	@FXML
@@ -34,39 +32,32 @@ public class RenderPaneController extends BasePaneController {
 	public void initialize(URL url, ResourceBundle rb) {
 		super.initialize(url, rb);
 		
-		outputWidthTextField.textProperty().addListener(new ChangeListener<String>() {
+		outputWidthTextField.textProperty().addListener((observable, oldValue, newValue) -> {
 
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				int newWidth;
-				try {
-					newWidth = Integer.parseInt(newValue);
-				} catch (Exception e) {
-					return; // TODO
-				}
-				ChoiceBox<CropRatio> cropRatioChoice = mainController.getCropPaneController().getCropRatioChoice();
-				if (maintainAspectCheckBox.isSelected() && cropRatioChoice.getValue().hasRatio()) {
-					int newHeight = (int) Math.round(cropRatioChoice.getValue().convertWidthToHeight(newWidth));
-					outputHeightTextField.setText(String.valueOf(newHeight));
-				}
+			int newWidth;
+			try {
+				newWidth = Integer.parseInt(newValue);
+			} catch (Exception e) {
+				return; // TODO - handle non-numeric inputs in a more friendly way
+			}
+			ChoiceBox<CropRatio> cropRatioChoice = mainController.getCropPaneController().getCropRatioChoice();
+			if (maintainAspectCheckBox.isSelected() && cropRatioChoice.getValue().hasRatio()) {
+				int newHeight = (int) Math.round(cropRatioChoice.getValue().convertWidthToHeight(newWidth));
+				outputHeightTextField.setText(String.valueOf(newHeight));
 			}
 		});
 		
-		outputHeightTextField.textProperty().addListener(new ChangeListener<String>() {
-
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				int newHeight;
-				try {
-					newHeight = Integer.parseInt(newValue);
-				} catch (Exception e) {
-					return; // TODO
-				}
-				ChoiceBox<CropRatio> cropRatioChoice = mainController.getCropPaneController().getCropRatioChoice();
-				if (maintainAspectCheckBox.isSelected() && cropRatioChoice.getValue().hasRatio()) {
-					int newWidth = (int) Math.round(cropRatioChoice.getValue().convertHeightToWidth(newHeight));
-					outputWidthTextField.setText(String.valueOf(newWidth));
-				}
+		outputHeightTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+			int newHeight;
+			try {
+				newHeight = Integer.parseInt(newValue);
+			} catch (Exception e) {
+				return; // TODO - handle non-numeric inputs in a more friendly way
+			}
+			ChoiceBox<CropRatio> cropRatioChoice = mainController.getCropPaneController().getCropRatioChoice();
+			if (maintainAspectCheckBox.isSelected() && cropRatioChoice.getValue().hasRatio()) {
+				int newWidth = (int) Math.round(cropRatioChoice.getValue().convertHeightToWidth(newHeight));
+				outputWidthTextField.setText(String.valueOf(newWidth));
 			}
 		});
 		

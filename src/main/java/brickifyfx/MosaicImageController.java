@@ -1,19 +1,15 @@
 package brickifyfx;
 
 import javafx.animation.ScaleTransition;
-import javafx.animation.ScaleTransitionBuilder;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabBuilder;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.AnchorPaneBuilder;
 import javafx.util.Duration;
 
 /**
@@ -41,19 +37,13 @@ public class MosaicImageController {
 		mosaicImageZoomState = MosaicImageZoomState.NO_ZOOM;
 		mosaicImageView = new ImageView(mosaicImage);
 		mosaicImageView.setPreserveRatio(true);
-		mosaicImageAnchorPane = AnchorPaneBuilder.create().minHeight(100.0).minWidth(100.0).children(mosaicImageView).build();
-		mosaicImageTab = TabBuilder.create()
-				.closable(true)
-				.text(tabName)
-				.content(mosaicImageAnchorPane)
-				.onClosed(new EventHandler<Event>() {
-
-					@Override
-					public void handle(Event event) {
-						parentController.tabClosed(MosaicImageController.this);
-					}
-				})
-				.build();
+		mosaicImageAnchorPane = new AnchorPane(mosaicImageView);
+		mosaicImageAnchorPane.setMinHeight(100.0);
+		mosaicImageAnchorPane.setMinWidth(100.0);
+		
+		mosaicImageTab = new Tab(tabName, mosaicImageAnchorPane);
+		mosaicImageTab.setClosable(true);
+		mosaicImageTab.setOnClosed(event -> parentController.tabClosed(MosaicImageController.this));
 
 		ChangeListener<Number> mosaicImageSizeChangeListener = new ChangeListener<Number>() {
 			@Override
@@ -110,12 +100,9 @@ public class MosaicImageController {
 				ScaleTransition scaleTransition;
 				switch (mosaicImageZoomState) {
 				case NO_ZOOM:
-					scaleTransition = ScaleTransitionBuilder.create()
-							.node(mosaicImageView)
-							.duration(Duration.millis(250))
-							.toX(1.0)
-							.toY(1.0)
-							.build();
+					scaleTransition = new ScaleTransition(Duration.millis(250), mosaicImageView);
+					scaleTransition.setToX(1.0);
+					scaleTransition.setToY(1.0);
 					scaleTransition.play();
 					mosaicImageZoomState = MosaicImageZoomState.ONE_TO_ONE;
 					break;
@@ -127,12 +114,9 @@ public class MosaicImageController {
 					double imgHeight = mosaicImageView.getImage().getHeight();
 					double scaleY = desiredHeight / imgHeight;
 
-					scaleTransition = ScaleTransitionBuilder.create()
-							.node(mosaicImageView)
-							.duration(Duration.millis(250))
-							.toX(scaleX)
-							.toY(scaleY)
-							.build();
+					scaleTransition = new ScaleTransition(Duration.millis(250), mosaicImageView);
+					scaleTransition.setToX(scaleX);
+					scaleTransition.setToY(scaleY);
 					scaleTransition.play();
 					mosaicImageZoomState = MosaicImageZoomState.OVERLAY_ORIGINAL;
 					break;

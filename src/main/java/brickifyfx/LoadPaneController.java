@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooserBuilder;
 
 public class LoadPaneController extends BasePaneController implements Initializable {
 	// File chooser fields
@@ -39,11 +38,10 @@ public class LoadPaneController extends BasePaneController implements Initializa
 		} else {
 			initialDirectory = lastLoadedFolder;
 		}
-		FileChooser fileChooser = FileChooserBuilder.create()
-				.extensionFilters(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"))
-				.initialDirectory(initialDirectory)
-				.title("Choose Image")
-				.build();
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"));
+		fileChooser.setInitialDirectory(initialDirectory);
+		fileChooser.setTitle("Choose Image");
 
 		File chosenFile = fileChooser.showOpenDialog(loadButton.getScene().getWindow());
 

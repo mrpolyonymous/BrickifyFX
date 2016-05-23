@@ -20,7 +20,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooserBuilder;
 
 import javax.imageio.ImageIO;
 
